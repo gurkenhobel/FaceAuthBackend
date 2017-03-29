@@ -46,6 +46,10 @@ namespace FaceAuthService.IO
                                var succ = WriteFile(tw.Path, tw.Data);
                                tw.SignalCompletion(succ);
                                break;
+                           case IOTaskType.Delete:
+                                var td = (IODeleteTask)task;
+                                td.SignalCompletion(DeleteFile(td.Path));
+                                break;
                        }
                    }
                }
@@ -82,6 +86,20 @@ namespace FaceAuthService.IO
             }
         }
 
+        private bool DeleteFile(string path)
+        {
+            try
+            {
+                File.Delete(path);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"DeleteFile: {ex.Message}");
+                return false;
+            }
+        }
+
         public async Task Write(string path, string data)
         {
             var task = new IOWriteTask(path, data);
@@ -99,7 +117,9 @@ namespace FaceAuthService.IO
 
         public async Task Delete(string path)
         {
-            
+            var task = new IODeleteTask(path);
+            WorkQueque.Enqueque(task);
+            await task.Task;
         }
 
     }

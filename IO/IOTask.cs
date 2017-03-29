@@ -34,6 +34,7 @@ namespace FaceAuthService.IO
     enum IOTaskType
     {
         Write,
-        Read
+        Read,
+        Delete
     }
 }
