@@ -1,4 +1,7 @@
-﻿/bin
-/obj
-/data
+﻿/bin 
+/obj 
+/data 
+/.*
+
 FaceAuthService.csproj
+
