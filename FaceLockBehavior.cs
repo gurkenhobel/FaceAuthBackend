@@ -144,6 +144,7 @@ namespace FaceAuthService
         {
             var fileInfo = new LockerObject { name = msg.filename };
             Database.Instance.DeleteFile(_user, fileInfo);
+            IOController.Instance.Delete($"{UserPath}/{msg.filename}");
             _user = Database.Instance.GetUser(_user._id);
             await SendFileCatalogUpdate(_user.locker);
         }
