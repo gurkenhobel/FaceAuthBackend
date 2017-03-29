@@ -90,7 +90,7 @@ namespace FaceAuthService.IO
         {
             try
             {
-                File.Delete(path);
+                File.Delete(path + ".dat");
                 return true;
             }
             catch (Exception ex)
