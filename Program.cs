@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using WebSocketSharp.Server;
 
@@ -11,8 +13,8 @@ namespace FaceAuthService
 
         public static void Main(string[] args)
         {
-
-            _server = new WebSocketServer(8000);
+            var cfg = Configuration.LoadConfig();
+            _server = new WebSocketServer(cfg["port"]);
             _server.AddWebSocketService<FaceLockBehavior>("/facelock");
             FaceAPIConnection.Instance.Connect();
 
@@ -25,7 +27,7 @@ namespace FaceAuthService
                 {
                     case "exit":
                         running = false;
-                        break;                   
+                        break;
                     case "group_create":
                         FaceAPIConnection.Instance.CreateGroup();
                         break;
@@ -36,5 +38,7 @@ namespace FaceAuthService
             _server.Stop();
             Task.Delay(1000).Wait();
         }
+
+       
     }
 }

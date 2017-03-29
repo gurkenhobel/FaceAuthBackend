@@ -34,7 +34,11 @@ namespace FaceAuthService
 
                 if (newUser.locker == null)
                 {
-                    var locker = new LockerDirectory() { name = $"{newUser.name}-locker", content = new List<LockerObject> { new LockerObject { name = "test1" }, new LockerObject { name = "test2" } } };
+                    var locker = new LockerDirectory()
+                    {
+                        name = $"{newUser.name}-locker",
+                        content = new List<LockerObject>()
+                    };
                     newUser.locker = locker;
                 }
 
