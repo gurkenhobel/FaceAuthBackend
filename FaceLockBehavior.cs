@@ -133,7 +133,7 @@ namespace FaceAuthService
         }
         private async Task HandleFileCreateRequest(FileCreateRequestMessage msg)
         {
-            var file = new LockerObject { name = msg.name };
+            var file = new LockerObject { name = msg.name, encrypted = msg.encrypted };
             Database.Instance.AddFile(_user, file);
             await IOController.Instance.Write($"{UserPath}/{msg.name}", msg.data);
             _user = Database.Instance.GetUser(_user._id);
