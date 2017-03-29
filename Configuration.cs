@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,12 +10,10 @@ namespace FaceAuthService
     class Configuration
     {
 
-        public static IConfigurationRoot LoadConfig()
+        public static Dictionary<string, string> LoadConfig()
         {
-            var builder = new ConfigurationBuilder()
-            .AddJsonFile(Directory.GetCurrentDirectory() + "/cfg/config.json");
-
-            return builder.Build();
+            var dataJson = File.ReadAllText(Directory.GetCurrentDirectory() + "/cfg/config.json");
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(dataJson);
         }
     }
 }

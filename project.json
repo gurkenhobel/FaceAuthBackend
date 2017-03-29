@@ -91,8 +91,6 @@
     "Microsoft.ProjectOxford.Face": "1.2.1.2",
     "Newtonsoft.Json": "9.0.1",
     "MongoDB.Driver":"2.4.2",
-	"Microsoft.Extensions.Configuration": "1.0.0",
-	"Microsoft.Extensions.Configuration.Json": "1.0.0",
   },
   "frameworks": {
     "netcoreapp1.1": {
