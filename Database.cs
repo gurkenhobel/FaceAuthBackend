@@ -16,7 +16,7 @@ namespace FaceAuthService
         protected Database()
         {
             _client = new MongoClient();
-            _database = _client.GetDatabase("test");
+            _database = _client.GetDatabase(Config.LoadDBName());
         }
         #endregion
 
