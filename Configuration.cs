@@ -12,7 +12,7 @@ namespace FaceAuthService
         public static IConfigurationRoot LoadConfig()
         {
             var builder = new ConfigurationBuilder()
-            .AddJsonFile(Directory.GetCurrentDirectory() + "cfg/config.json");
+            .AddJsonFile(Directory.GetCurrentDirectory() + "/cfg/config.json");
 
             return builder.Build();
         }

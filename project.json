@@ -3,7 +3,8 @@
   "version": "1.0.0-*",
   "buildOptions": {
     "debugType": "portable",
-    "emitEntryPoint": true
+    "emitEntryPoint": true,
+    "copyToOutput": "cfg/config.json"
   },
   "dependencies": {
     "Microsoft.NETCore.DotNetHostPolicy" : "1.1.0",

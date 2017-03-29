@@ -14,7 +14,7 @@ namespace FaceAuthService
         public static void Main(string[] args)
         {
             var cfg = Configuration.LoadConfig();
-            _server = new WebSocketServer(cfg["port"]);
+            _server = new WebSocketServer(int.Parse(cfg["port"]));
             _server.AddWebSocketService<FaceLockBehavior>("/facelock");
             FaceAPIConnection.Instance.Connect();
 
