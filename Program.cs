@@ -12,7 +12,7 @@ namespace FaceAuthService
         public static void Main(string[] args)
         {
 
-            _server = new WebSocketServer(Config.LoadPort());
+            _server = new WebSocketServer(8000);
             _server.AddWebSocketService<FaceLockBehavior>("/facelock");
             FaceAPIConnection.Instance.Connect();
 
@@ -25,16 +25,7 @@ namespace FaceAuthService
                 {
                     case "exit":
                         running = false;
-                        break;
-                    case "connect_api":
-                        FaceAPIConnection.Instance.Connect();
-                        break;
-                    case "db_add":
-                        Database.Instance.InsertUser();
-                        break;
-                    case "db_get":
-                        Database.Instance.GetAllUsers();
-                        break;
+                        break;                   
                     case "group_create":
                         FaceAPIConnection.Instance.CreateGroup();
                         break;

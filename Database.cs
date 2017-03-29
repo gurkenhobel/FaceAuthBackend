@@ -16,24 +16,13 @@ namespace FaceAuthService
         protected Database()
         {
             _client = new MongoClient();
-            _database = _client.GetDatabase(Config.LoadDBName());
+            _database = _client.GetDatabase("test");
         }
         #endregion
 
         private static MongoClient _client;
         private static IMongoDatabase _database;
 
-
-        public async Task InsertUser()
-        {
-            var file = new LockerObject { name = "test-file" };
-            var dir = new LockerDirectory { name = "test-dir" };
-            var locker = new LockerDirectory() { name = "test-locker", content = new List<LockerObject>() { file, dir } };
-            var doc = new User() { name = "test", locker = locker };
-
-            var collection = _database.GetCollection<User>("users");
-            await collection.InsertOneAsync(doc);
-        }
 
         public async Task<User> AddUser(User newUser)
         {

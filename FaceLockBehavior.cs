@@ -128,6 +128,7 @@ namespace FaceAuthService
             catch (Exception ex)
             {
                 Console.WriteLine($"HandleAuth: {ex.Message}");
+                Console.WriteLine(UserPath);
                 await SendAuthResponse(null);
             }
         }
